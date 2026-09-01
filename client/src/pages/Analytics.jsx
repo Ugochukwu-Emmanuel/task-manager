@@ -18,7 +18,7 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import './Analytics.css';
 
-const API_URL = 'http://localhost:5000/api/analytics';
+ const API_URL = '/api/analytics'; 
 
 // Colors mirrored from index.css tokens — recharts needs literal values,
 // it can't read CSS custom properties directly.
