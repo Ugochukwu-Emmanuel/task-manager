@@ -34,14 +34,14 @@ task-manager/
 10. Dashboard Analytics ✅
 11. Professional UI/UX ✅
 12. Testing & Security ✅
-13. GitHub documentation
-14. Deployment
+13. GitHub documentation ✅
+14. Deployment 
 
 ### Additional features (beyond the original 14-stage plan)
 - ✅ Soft delete with a 10-second undo window
 - ✅ Due-date browser notifications, with an on/off toggle
 - ✅ Change password / profile settings page
-- ⏳ Password reset via email
+  
 
 ## Setup (once cloned)
 ### Server
