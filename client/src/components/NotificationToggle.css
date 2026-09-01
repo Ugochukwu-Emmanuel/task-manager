@@ -1,0 +1,43 @@
+.notif-toggle {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--color-slate-light);
+  border: 1.5px solid var(--color-slate-light);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.notif-toggle__icon {
+  display: none;
+}
+
+.notif-toggle__label {
+  line-height: 1;
+}
+
+.notif-toggle:hover:not(:disabled) {
+  border-color: var(--color-ember);
+  color: var(--color-ember);
+}
+
+.notif-toggle[data-state='granted'] {
+  border-color: var(--color-moss);
+  color: var(--color-moss);
+  cursor: default;
+}
+
+.notif-toggle[data-state='denied'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.notif-toggle[data-state='paused'] {
+  color: var(--color-slate-light);
+  border-color: var(--color-slate-light);
+}

@@ -1,0 +1,78 @@
+.task-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.task-stats__card {
+  position: relative;
+  background-color: var(--color-paper-raised);
+  border: 1px solid var(--color-sand);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.1rem 1rem;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.task-stats__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-slate-light);
+  opacity: 0.35;
+}
+
+.task-stats__card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-raised);
+}
+
+.task-stats__card--inProgress::before {
+  background: var(--color-gold);
+  opacity: 1;
+}
+.task-stats__card--completed::before {
+  background: var(--color-moss);
+  opacity: 1;
+}
+.task-stats__card--overdue::before {
+  background: var(--color-danger);
+  opacity: 1;
+}
+
+.task-stats__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.task-stats__label {
+  font-size: 0.78rem;
+  color: var(--color-slate);
+}
+
+.task-stats__card--inProgress .task-stats__value {
+  color: var(--color-gold);
+}
+
+.task-stats__card--completed .task-stats__value {
+  color: var(--color-moss);
+}
+
+.task-stats__card--overdue .task-stats__value {
+  color: var(--color-danger);
+}
+
+@media (max-width: 640px) {
+  .task-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

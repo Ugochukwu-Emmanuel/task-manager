@@ -1,0 +1,102 @@
+/* ============================================
+   Design tokens — "Ledger" system
+   A working desk / ticket-stub aesthetic:
+   ink + paper base, ember/gold/moss for
+   priority, mono type for anything that
+   reads like data (dates, ids, categories).
+   ============================================ */
+:root {
+  --color-ink: #1b1f2b;
+  --color-ink-soft: #2a3040;
+  --color-paper: #f4f2ec;
+  --color-paper-raised: #fffdf8;
+  --color-slate: #5b6472;
+  --color-slate-light: #9aa2af;
+  --color-sand: #ded5bd;
+  --color-sand-soft: #eae4d2;
+
+  --color-ember: #d8602f;
+  --color-ember-soft: #f7ded1;
+  --color-gold: #b9862f;
+  --color-gold-soft: #f4e8cf;
+  --color-moss: #48734f;
+  --color-moss-soft: #e0e9df;
+  --color-danger: #b7412c;
+  --color-danger-soft: #f6ddd6;
+
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-card: 0 1px 2px rgba(27, 31, 43, 0.06), 0 1px 1px rgba(27, 31, 43, 0.04);
+  --shadow-raised: 0 4px 16px rgba(27, 31, 43, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(27, 31, 43, 0.035) 1px, transparent 0);
+  background-size: 22px 22px;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

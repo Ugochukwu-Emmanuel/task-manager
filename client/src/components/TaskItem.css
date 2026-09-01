@@ -1,0 +1,272 @@
+.task-card {
+  position: relative;
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  background-color: var(--color-paper-raised);
+  border: 1px solid var(--color-sand);
+  border-left: 3px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1.1rem 0.9rem 1.6rem;
+  margin-bottom: 0.7rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  animation: task-card-in 0.2s ease both;
+}
+
+@keyframes task-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-raised);
+  border-color: var(--color-slate-light);
+}
+
+/* Perforation — reveals the page background through the card's left edge,
+   like a ticket stub torn from a book. */
+.task-card::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background-image: radial-gradient(circle, var(--color-paper) 2.5px, transparent 3px);
+  background-size: 10px 14px;
+  background-repeat: repeat-y;
+}
+
+.task-card--high {
+  border-left-color: var(--color-ember);
+}
+.task-card--medium {
+  border-left-color: var(--color-gold);
+}
+.task-card--low {
+  border-left-color: var(--color-moss);
+}
+
+.task-card.is-done {
+  opacity: 0.6;
+}
+
+.task-card.is-done .task-card__title {
+  text-decoration: line-through;
+  text-decoration-color: var(--color-slate-light);
+}
+
+.task-card__status {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-slate-light);
+  background: none;
+  color: var(--color-moss);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.15rem;
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+
+.task-card__status:hover {
+  border-color: var(--color-moss);
+  transform: scale(1.08);
+}
+
+.task-card.is-done .task-card__status {
+  border-color: var(--color-moss);
+  background-color: var(--color-moss-soft);
+}
+
+.task-card.is-done .task-card__status {
+  border-color: var(--color-moss);
+  background-color: var(--color-moss-soft);
+}
+
+.task-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.task-card__title {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.task-card__stamp {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.45rem;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+  transform: rotate(-3deg);
+}
+
+.task-card__stamp--high {
+  color: var(--color-ember);
+}
+.task-card__stamp--medium {
+  color: var(--color-gold);
+}
+.task-card__stamp--low {
+  color: var(--color-moss);
+}
+
+.task-card__desc {
+  font-size: 0.85rem;
+  color: var(--color-slate);
+  margin-top: 0.3rem;
+}
+
+.task-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-slate);
+}
+
+.task-card__category {
+  border: 1px dashed var(--color-sand);
+  border-radius: 3px;
+  padding: 0.1rem 0.4rem;
+}
+
+.task-card__due.is-overdue {
+  color: var(--color-danger);
+  font-weight: 500;
+}
+
+.task-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.task-card__actions button {
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+  color: var(--color-slate);
+  text-align: right;
+}
+
+.task-card__actions button:hover {
+  color: var(--color-ink);
+  text-decoration: underline;
+}
+
+.task-card__delete:hover {
+  color: var(--color-danger) !important;
+}
+
+/* Editing state */
+.task-card--editing {
+  flex-direction: column;
+  border-left-color: var(--color-ink);
+}
+
+.task-card__edit-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 1px solid var(--color-sand);
+  padding: 0.3rem 0;
+  margin-bottom: 0.5rem;
+}
+.task-card__edit-title:focus {
+  outline: none;
+  border-bottom-color: var(--color-ember);
+}
+
+.task-card__edit-desc {
+  width: 100%;
+  border: 1px solid var(--color-sand);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.5rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+  resize: vertical;
+}
+
+.task-card__edit-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+
+.task-card__edit-row select,
+.task-card__edit-row input {
+  border: 1px solid var(--color-sand);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.task-card__edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.task-card__edit-actions button {
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  border: 1px solid var(--color-sand);
+  background: none;
+}
+
+.task-card__save {
+  background-color: var(--color-ink) !important;
+  color: var(--color-paper) !important;
+  border-color: var(--color-ink) !important;
+}
+
+@media (max-width: 560px) {
+  .task-card {
+    flex-wrap: wrap;
+  }
+
+  .task-card__actions {
+    flex-direction: row;
+    gap: 1rem;
+    margin-left: 32px;
+    margin-top: 0.4rem;
+  }
+
+  .task-card__actions button {
+    text-align: left;
+  }
+}

@@ -1,0 +1,231 @@
+.header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1.25rem 1.75rem;
+  background: linear-gradient(135deg, var(--color-ink) 0%, var(--color-ink-soft) 100%);
+  color: var(--color-paper);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.header__mark {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  border: 1.5px solid var(--color-ember);
+  color: var(--color-ember);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.5rem;
+  transform: rotate(-2deg);
+}
+
+.header__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.header__date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-slate-light);
+  margin-top: 0.15rem;
+}
+
+.header__user {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-left: auto;
+}
+
+.header__username {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-slate-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.header__logout,
+.header__menu-toggle {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--color-paper);
+  border: 1.5px solid var(--color-slate-light);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+  line-height: 1;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.header__logout:hover,
+.header__menu-toggle:hover {
+  border-color: var(--color-ember);
+  color: var(--color-ember);
+}
+
+.header__nav {
+  display: flex;
+  gap: 0.4rem;
+  margin-left: 2rem;
+}
+
+.header__nav-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-slate-light);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.header__nav-link:hover {
+  color: var(--color-paper);
+  background-color: rgba(244, 242, 236, 0.08);
+}
+
+.header__nav-link.active {
+  color: var(--color-ember);
+  background-color: rgba(216, 96, 47, 0.12);
+}
+
+.header__menu {
+  position: relative;
+  display: none;
+}
+
+.header__menu-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 180px;
+  background-color: var(--color-ink-soft);
+  border: 1px solid rgba(244, 242, 236, 0.15);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  z-index: 200;
+}
+
+.header__menu-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: left;
+  color: var(--color-paper);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.7rem;
+  cursor: pointer;
+}
+
+.header__menu-link:hover {
+  background-color: rgba(244, 242, 236, 0.08);
+}
+
+.header__menu-link.active {
+  color: var(--color-ember);
+}
+
+.header__menu-link--danger {
+  margin-top: 0.2rem;
+  border-top: 1px solid rgba(244, 242, 236, 0.12);
+  padding-top: 0.7rem;
+  color: var(--color-ember);
+}
+
+.header__menu-item--notif {
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(244, 242, 236, 0.12);
+  margin-bottom: 0.2rem;
+}
+
+.header__menu-item--notif .notif-toggle {
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.7rem;
+  font-size: 0.75rem;
+}
+
+.header__menu-item--notif .notif-toggle:hover:not(:disabled) {
+  background-color: rgba(244, 242, 236, 0.08);
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.85rem 1rem;
+    gap: 0.6rem;
+  }
+
+  .header__title {
+    font-size: 1.1rem;
+  }
+
+  /* Brand claims its own full-width row, so Tasks + Menu always land
+     together on the row directly beneath it. */
+  .header__brand {
+    flex-basis: 100%;
+  }
+
+  .header__nav {
+    margin-left: 0;
+    order: 2;
+  }
+
+  .header__user {
+    order: 3;
+  }
+
+  .header__nav-link--full-only {
+    display: none;
+  }
+
+  .header__logout--full-only {
+    display: none;
+  }
+
+  .header__notif--full-only {
+    display: none;
+  }
+
+  .header__menu {
+    display: inline-block;
+  }
+
+  .header__username {
+    display: none;
+  }
+}

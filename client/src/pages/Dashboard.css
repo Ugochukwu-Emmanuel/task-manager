@@ -1,0 +1,39 @@
+.dashboard {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard__body {
+  flex: 1;
+  display: flex;
+}
+
+.dashboard__main {
+  flex: 1;
+  padding: 1.5rem 2rem 3rem;
+  max-width: 900px;
+}
+
+.dashboard__hero {
+  background: linear-gradient(135deg, var(--color-sand-soft) 0%, var(--color-paper) 60%, var(--color-ember-soft) 130%);
+  border: 1px solid var(--color-sand);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.25rem 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard__hero .task-stats {
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .dashboard__body {
+    flex-direction: column;
+  }
+
+  .dashboard__main {
+    padding: 1.25rem;
+    max-width: 100%;
+  }
+}
