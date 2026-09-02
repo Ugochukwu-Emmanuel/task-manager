@@ -1,6 +1,7 @@
-  import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
- const API_URL = '/api/tasks'; 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || '';
+const API_URL = `${API_BASE}/api/tasks`;
 const TaskContext = createContext(null);
 
 export function TaskProvider({ children }) {

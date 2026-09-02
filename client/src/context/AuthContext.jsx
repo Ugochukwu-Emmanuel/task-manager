@@ -1,6 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-const API_URL = '/api/auth';
+// Locally, this stays empty and requests go through the CRA dev-server
+// proxy (relative path). In production, Vercel builds this with
+// REACT_APP_API_BASE_URL set to the real Render backend URL, since
+// frontend and backend live on separate domains with no proxy.
+const API_BASE = process.env.REACT_APP_API_BASE_URL || '';
+const API_URL = `${API_BASE}/api/auth`;
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
