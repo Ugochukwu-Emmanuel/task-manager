@@ -11,10 +11,17 @@ function signToken(userId) {
 }
 
 function setAuthCookie(res, token) {
+  const isProduction = process.env.NODE_ENV === 'production';
   res.cookie('token', token, {
     httpOnly: true, // JS in the browser can't read this cookie — blocks XSS token theft
-    sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production', // HTTPS-only in production
+    // In production, frontend (Vercel) and backend (Render) live on
+    // different domains — that makes this a cross-site request, and
+    // browsers require SameSite=None (paired with Secure=true) for a
+    // cookie to be sent cross-site at all. Locally, frontend and
+    // backend are effectively same-site via the dev proxy, so Lax
+    // works fine and doesn't require HTTPS.
+    sameSite: isProduction ? 'none' : 'lax',
+    secure: isProduction, // HTTPS-only in production; required when sameSite is 'none'
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days, in milliseconds
   });
 }
@@ -76,7 +83,14 @@ async function login(req, res) {
 
 // POST /api/auth/logout
 function logout(req, res) {
-  res.clearCookie('token');
+  const isProduction = process.env.NODE_ENV === 'production';
+  // Must match the same attributes used when the cookie was set,
+  // or the browser treats this as a different cookie and won't clear it.
+  res.clearCookie('token', {
+    httpOnly: true,
+    sameSite: isProduction ? 'none' : 'lax',
+    secure: isProduction,
+  });
   res.status(204).send();
 }
 
