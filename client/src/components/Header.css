@@ -113,6 +113,23 @@
   background-color: rgba(216, 96, 47, 0.12);
 }
 
+/* Tasks stays visible at every screen width, so it gets its own
+   outlined-button treatment to stand out from Analytics/Settings,
+   which read as plain nav links. Matches the moss green used for
+   the Reminders toggle's "on" state, tying the two persistent
+   header controls together visually. */
+.header__nav-link--primary {
+  border: 1.5px solid var(--color-moss);
+}
+
+.header__nav-link--primary:hover {
+  border-color: var(--color-paper);
+}
+
+.header__nav-link--primary.active {
+  border-color: var(--color-ember);
+}
+
 .header__menu {
   position: relative;
   display: none;

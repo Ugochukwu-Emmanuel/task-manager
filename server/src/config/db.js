@@ -13,6 +13,15 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
+  // TiDB Cloud (and most managed DB hosts) require SSL; local MySQL
+  // doesn't use it at all. DB_SSL=true switches this on — set it in
+  // Render's environment variables for production, leave it unset
+  // locally. TiDB's certificate is publicly trusted (like a normal
+  // website's), so Node's built-in CA list is enough — no need to
+  // bundle a custom certificate file.
+  ...(process.env.DB_SSL === 'true' && {
+    ssl: { rejectUnauthorized: true },
+  }),
 });
 
 module.exports = pool;

@@ -51,7 +51,7 @@ function Header() {
       </div>
 
       <nav className="header__nav">
-        <NavLink to="/" end className="header__nav-link">
+        <NavLink to="/" end className="header__nav-link header__nav-link--primary">
           Tasks
         </NavLink>
         <NavLink to="/analytics" className="header__nav-link header__nav-link--full-only">
